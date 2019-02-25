@@ -50,3 +50,5 @@ async function compress() {
 }
 
 compress();
+
+module.exports = compress()

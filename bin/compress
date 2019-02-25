@@ -1,0 +1,32 @@
+#!/usr/bin/env node
+const pjson = require('../package');
+const program = require('commander');
+const cli = require('../src/cli');
+
+const {
+    version,
+    description
+} = pjson;
+
+program
+    .version(version)
+    .usage('[options] [source...]')  
+    .description(description)
+    .option('-s, --source <source>', 'use source', '', '/')
+    .parse(process.argv)
+    .action(cli)
+
+program.on('--help', function(){
+    console.log('')
+    console.log('Examples: ');
+    console.log('  $ ');
+});
+
+program.parse(process.argv);
+
+
+
+if (!program.args.length) {
+    program.help();
+}
+console.log("command end")
